@@ -171,7 +171,6 @@ public class UserServiceImpl implements UserService {
             log.error("-> the status of a deleted user cannot be changed ");
             throw new IllegalStateException("User is already deleted");
         }
-
         userRepository.save(user);
     }
 
@@ -212,12 +211,4 @@ public class UserServiceImpl implements UserService {
         emailSenderService.sendEmail(email);
     }
 
-
-
-/*TODO file write and get path
-    private String savePhoto(MultipartFile photo) throws IOException {
-        //byte[] bytes = photo.getBytes();
-        //return Base64.getEncoder().encodeToString(bytes);
-        return "path/to/saved/photo.jpg";
-    }*/
 }
