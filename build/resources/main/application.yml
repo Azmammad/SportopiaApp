@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: Sportopia
+  datasource:
+    url: jdbc:mysql://localhost/sportopia
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+
+  liquibase:
+    enabled: false
+
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ezmemmedcebrayilov17@gmail.com
+    password: rusvyhxwhjbyzcxm
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  files: C:\Users\Venera.DESKTOP-N0RPV6R\Documents\project-files

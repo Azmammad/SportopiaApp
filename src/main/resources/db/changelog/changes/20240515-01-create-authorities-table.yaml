@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20240515-01
+      author: admin
+      changes:
+        - createTable:
+            tableName: authorities
+            columns:
+              - column:
+                  name: name
+                  type: VARCHAR(25)
+                  constraints:
+                    primaryKey: true
+                    nullable: false

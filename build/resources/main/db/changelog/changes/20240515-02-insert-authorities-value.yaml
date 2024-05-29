@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20240515-02
+      author: admin
+      changes:
+        - insert:
+            tableName: authorities
+            columns:
+              - column:
+                  name: name
+                  value: 'ADMIN'
+        - insert:
+            tableName: authorities
+            columns:
+              - column:
+                  name: name
+                  value: 'USER'
