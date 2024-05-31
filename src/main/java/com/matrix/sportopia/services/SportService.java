@@ -10,7 +10,9 @@ public interface SportService {
     SportResponseDto getById(Long id);
     List<SportResponseDto> getAll();
     SportResponseDto add(SportRequestDto sportRequest);
+    List<SportResponseDto> addList(List<SportRequestDto> sportRequests);
     SportResponseDto update(Long id,SportRequestDto sportRequest);
     void delete(Long id);
     List<SportResponseDto> getAllNoActiveSports(SportRequestDto sportRequestDto);
+    void changeStatus(Long id);
 }

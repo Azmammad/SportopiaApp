@@ -62,5 +62,4 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "authority_name")
     )
     private Set<Authority> authorities = new HashSet<>();
-
 }

@@ -10,6 +10,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 @Slf4j
 public class UploadPathUtility {
@@ -17,13 +18,11 @@ public class UploadPathUtility {
        try {
             String originalFilename = file.getOriginalFilename();
             Path targetPath = Paths.get(UPLOAD_DIR, originalFilename);
-            int counter = 1;
             while (Files.exists(targetPath)) {
                 String baseName = FilenameUtils.getBaseName(originalFilename);
                 String extension = FilenameUtils.getExtension(originalFilename);
-                String newFilename = baseName + "_" + counter + "." + extension;
+                String newFilename = baseName + "_" + UUID.randomUUID().toString() + "." + extension;
                 targetPath = Paths.get(UPLOAD_DIR, newFilename);
-                counter++;
             }
            Files.copy(file.getInputStream(), targetPath);
            return targetPath.toString();

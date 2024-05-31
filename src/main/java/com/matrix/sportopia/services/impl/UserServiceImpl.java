@@ -25,8 +25,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.matrix.sportopia.enums.UserStatus.ACTIVE;
-import static com.matrix.sportopia.enums.UserStatus.INACTIVE;
+import static com.matrix.sportopia.enums.UserStatus.*;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +44,7 @@ public class UserServiceImpl implements UserService {
         log.info("-> user-service get by id operation with id = {}", id);
         UserResponseDto userResponseDto = userRepository.findById(id).map(userMapper::toResponse)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        if (userResponseDto.getStatus() != ACTIVE){
+        if (userResponseDto.getStatus() == DELETED) {
             throw new EntityNotFoundException("Active user not found");
         }
         log.info("-> successful! user-service get by id operation with id = {}", id);
@@ -80,7 +79,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserResponseDto add(UserRequestDto userRequestDto,MultipartFile photo) {
+    public UserResponseDto add(UserRequestDto userRequestDto, MultipartFile photo) {
         if (userRequestDto == null) {
             log.warn("-> cannot add null user");
             throw new IllegalArgumentException("User cannot be null");
@@ -124,8 +123,8 @@ public class UserServiceImpl implements UserService {
 
             userMapper.updateEntityFromRequest(userRequestDto, existingUser);
             MultipartFile photo = userRequestDto.getPhoto();
-            if (photo!=null && !photo.isEmpty()){
-                String photoPath = UploadPathUtility.uploadPath(userRequestDto.getPhoto(),rootDir);
+            if (photo != null && !photo.isEmpty()) {
+                String photoPath = UploadPathUtility.uploadPath(userRequestDto.getPhoto(), rootDir);
                 existingUser.setPhotoPath(photoPath);
             }
 
@@ -157,23 +156,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeStatus(Long id){
+    public void changeStatus(Long id) {
         log.info("-> change status started");
         User user = userRepository.findById(id)
-                .orElseThrow(()-> new EntityNotFoundException("User not found"));
-        if (user.getStatus() == ACTIVE){
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        if (user.getStatus() == ACTIVE) {
             log.info("-> user status changed is Inactive");
             user.setStatus(INACTIVE);
         } else if (user.getStatus() == INACTIVE) {
             log.info("-> user status changed is Active");
             user.setStatus(ACTIVE);
-        }else {
+        } else {
             log.error("-> the status of a deleted user cannot be changed ");
             throw new IllegalStateException("User is already deleted");
         }
         userRepository.save(user);
     }
-
 
 
     @Override
@@ -182,9 +180,15 @@ public class UserServiceImpl implements UserService {
             log.warn("-> cannot update password with null request");
             throw new IllegalArgumentException("Request cannot be null");
         }
-        String email = updatePasswordReqDto.getEmail();
         String currentPassword = updatePasswordReqDto.getCurrentPassword();
         String newPassword = updatePasswordReqDto.getNewPassword();
+        String againNewPassword = updatePasswordReqDto.getAgainNewPassword();
+
+        if (!newPassword.equals(againNewPassword)) {
+            log.error("-> new passwords do not match");
+            throw new IllegalArgumentException("New passwords do not match");
+        }
+        String email = getCurrentUserEmail();
 
         Optional<User> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()) {
@@ -203,12 +207,17 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private void sendToMail(User addedUser){
+    private void sendToMail(User addedUser) {
         Email email = new Email();
         email.setReceiver(addedUser.getEmail());
         email.setSubject("Welcome to Sportopia");
         email.setText("Dear " + addedUser.getName() + " Thank you for registering at Sportopia");
         emailSenderService.sendEmail(email);
+    }
+
+    private String getCurrentUserEmail() {
+        //return SecurityContextHolder.getContext().getAuthentication().getName();
+        return null;
     }
 
 }

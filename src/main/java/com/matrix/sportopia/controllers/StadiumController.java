@@ -25,20 +25,30 @@ public class StadiumController {
         return stadiumService.getAll();
     }
 
+    @GetMapping("/sport/{sportId}")
+    public List<StadiumResponseDto> getStadiumsBySportId(@PathVariable Long sportId){
+        return stadiumService.getStadiumsBySportId(sportId);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public StadiumResponseDto add(@RequestBody StadiumRequestDto stadiumRequestDto){
         return stadiumService.add(stadiumRequestDto);
     }
 
-    @PutMapping
-    public StadiumResponseDto update(@RequestBody StadiumRequestDto stadiumRequestDto){
-        return stadiumService.update(stadiumRequestDto);
+    @PutMapping("/{id}")
+    public StadiumResponseDto update(@PathVariable Long id,@RequestBody StadiumRequestDto stadiumRequestDto){
+        return stadiumService.update(id,stadiumRequestDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
         stadiumService.delete(id);
+    }
+
+    @PutMapping("/change-status/{id}")
+    public void changeStatus(@PathVariable Long id){
+        stadiumService.changeStatus(id);
     }
 }

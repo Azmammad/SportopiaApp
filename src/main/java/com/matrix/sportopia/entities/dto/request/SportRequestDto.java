@@ -8,5 +8,5 @@ public class SportRequestDto {
     private String name;
 
     @NotNull
-    private Boolean status;
+    private Integer status;
 }

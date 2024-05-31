@@ -31,14 +31,19 @@ public class SportController {
         return sportService.getAll();
     }
 
-
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public SportResponseDto add(@RequestBody SportRequestDto sportRequest){
         return sportService.add(sportRequest);
     }
 
-    @PutMapping("upsert/{id}")
+    @PostMapping("/add-list")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<SportResponseDto> addList(@RequestBody List<SportRequestDto> sportRequests){
+        return sportService.addList(sportRequests);
+    }
+
+    @PutMapping("/{id}")
     public SportResponseDto update(@PathVariable Long id,@RequestBody SportRequestDto sportRequestDto){
         return sportService.update(id,sportRequestDto);
     }
@@ -46,5 +51,10 @@ public class SportController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         sportService.delete(id);
+    }
+
+    @PutMapping("change-status/{id}")
+    public void changeStatus(@PathVariable Long id){
+        sportService.changeStatus(id);
     }
 }

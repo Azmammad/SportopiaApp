@@ -20,9 +20,7 @@ public class Sport {
     private String name;
 
     @NotNull
-    private Boolean status;
-
-
+    private Integer status;
 
     @OneToMany(mappedBy = "sport",cascade = CascadeType.ALL)
     private List<Stadium> stadions;

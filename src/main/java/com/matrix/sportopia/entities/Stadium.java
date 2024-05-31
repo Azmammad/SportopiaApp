@@ -1,6 +1,8 @@
 package com.matrix.sportopia.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.matrix.sportopia.enums.StadiumStatus;
+import com.matrix.sportopia.repositories.StadiumRepository;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -32,8 +34,8 @@ public class Stadium {
     @JoinColumn(name = "sport_id",nullable = false)
     private Sport sport;
 
-    @NotNull
-    private Boolean status;
+    @Enumerated(EnumType.STRING)
+    private StadiumStatus status;
 
     @OneToMany(mappedBy = "stadium",fetch = FetchType.LAZY)
     private List<Reservation> reservations;

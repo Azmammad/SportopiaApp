@@ -6,6 +6,6 @@ import lombok.Data;
 public class SportResponseDto {
 
     private String name;
-    private Boolean status;
+    private Integer status;
 
 }

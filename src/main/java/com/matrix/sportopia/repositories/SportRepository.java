@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface SportRepository extends JpaRepository<Sport,Long> {
 
-    @Query("select s from Sport s where s.status = true")
+    @Query("select s from Sport s where s.status = 1")
     List<Sport> findAllActiveSports();
 
 }

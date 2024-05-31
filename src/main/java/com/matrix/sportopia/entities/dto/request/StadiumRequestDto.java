@@ -1,5 +1,6 @@
 package com.matrix.sportopia.entities.dto.request;
 
+import com.matrix.sportopia.enums.StadiumStatus;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -12,5 +13,5 @@ public class StadiumRequestDto {
     private Long sportId;
 
     @NotNull
-    private Boolean status;
+    private StadiumStatus status;
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-27T18:37:03+0400",
+    date = "2024-05-31T09:53:18+0400",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.7.jar, environment: Java 17.0.9 (Oracle Corporation)"
 )
 @Component
@@ -25,6 +25,7 @@ public class StadiumMapperImpl extends StadiumMapper {
         stadiumResponseDto.setName( stadium.getName() );
         stadiumResponseDto.setAddress( stadium.getAddress() );
         stadiumResponseDto.setPrice( stadium.getPrice() );
+        stadiumResponseDto.setStatus( stadium.getStatus() );
 
         return stadiumResponseDto;
     }
@@ -44,5 +45,18 @@ public class StadiumMapperImpl extends StadiumMapper {
         stadium.setStatus( stadiumRequest.getStatus() );
 
         return stadium;
+    }
+
+    @Override
+    public void updateEntityFromDto(StadiumRequestDto dto, Stadium entity) {
+        if ( dto == null ) {
+            return;
+        }
+
+        entity.setName( dto.getName() );
+        entity.setCity( dto.getCity() );
+        entity.setAddress( dto.getAddress() );
+        entity.setPrice( dto.getPrice() );
+        entity.setStatus( dto.getStatus() );
     }
 }
