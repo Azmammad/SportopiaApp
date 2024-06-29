@@ -1,8 +1,8 @@
 package com.matrix.sportopia.mapper;
 
 import com.matrix.sportopia.entities.Reservation;
-import com.matrix.sportopia.entities.dto.request.ReservationRequestDto;
-import com.matrix.sportopia.entities.dto.response.ReservationResponseDto;
+import com.matrix.sportopia.models.dto.request.ReservationRequestDto;
+import com.matrix.sportopia.models.dto.response.ReservationResponseDto;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

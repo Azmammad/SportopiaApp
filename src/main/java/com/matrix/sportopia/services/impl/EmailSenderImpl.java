@@ -1,6 +1,6 @@
 package com.matrix.sportopia.services.impl;
 
-import com.matrix.sportopia.entities.dto.request.Email;
+import com.matrix.sportopia.models.dto.request.Email;
 import com.matrix.sportopia.services.EmailSenderService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

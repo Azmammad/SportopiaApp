@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05c6b5f7-f6d3-4dd3-8599-eebd61ea4ef8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/20240603-02-insert-authorities-value.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
@@ -13,25 +16,44 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d27f9730-a67a-4dd5-8569-83ee3008c6c8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d27f9730-a67a-4dd5-8569-83ee3008c6c8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/SportopiaApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/SportopiaApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/ReservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/ReservationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/SportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/SportController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/StadiumController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/StadiumController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/Sport.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/Sport.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/Stadium.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/Stadium.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/SportRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/SportRequestDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/StadiumRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/StadiumRequestDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/UpdatePasswordReqDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/UpdatePasswordReqDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/SportResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/SportResponseDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/StadiumResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/StadiumResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/Authority.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/Authority.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/Email.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/ReservationRequestDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/SportRequestDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/StadiumRequestDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/UpdatePasswordReqDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/request/UserRequestDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/ReservationResponseDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/SportResponseDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/StadiumResponseDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/entities/dto/response/UserResponseDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/exceptions/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/exceptions/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/exceptions/handle/EntityNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/exceptions/handle/EntityNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/ReservationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/ReservationMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/ReservationMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/ReservationMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/SportMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/SportMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/SportMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/SportMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/StadiumMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/StadiumMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/StadiumMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/StadiumMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/UserMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/UserMapperImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/mappingUtil/UploadPathUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/mapper/mappingUtil/UploadPathUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/repositories/SportRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/repositories/SportRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/repositories/StadiumRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/repositories/StadiumRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/repositories/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/EmailSenderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/EmailSenderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/ReservationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/ReservationService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/SportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/SportService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/StadiumService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/StadiumService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/EmailSenderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/EmailSenderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/ReservationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/ReservationServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/SportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/SportServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/StadiumServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/StadiumServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/matrix/sportopia/services/impl/UserServiceImpl.class" afterDir="false" />
@@ -39,27 +61,67 @@
       <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/matrix/sportopia/mapper/SportMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/matrix/sportopia/mapper/SportMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/matrix/sportopia/mapper/StadiumMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/matrix/sportopia/mapper/StadiumMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/matrix/sportopia/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/matrix/sportopia/mapper/UserMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserServiceImpl.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/Sportopia-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Sportopia-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/Sportopia-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Sportopia-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.matrix.sportopia.SportopiaApplicationTests.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/com.matrix.sportopia.SportopiaApplicationTests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.matrix.sportopia.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/com.matrix.sportopia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/db/changelog/changes/20240515-01-create-authorities-table.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/db/changelog/changes/20240515-02-insert-authorities-value.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/db/changelog/changes/20240515-03-insert-users-value.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/db/changelog/changes/20241505-04-insert-user_authority-admin.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.matrix.sportopia.SportopiaApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-com.matrix.sportopia.SportopiaApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ReservationServiceImpl.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/StadiumController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/StadiumRepository.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/StadiumServiceImpl.class.uniqueId3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/SportopiaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/SportopiaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/ReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/SportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/SportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/StadiumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/StadiumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/Sport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/Sport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/Stadium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/Stadium.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/Authority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/Authority.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/SportRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/SportRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/StadiumRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/StadiumRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/UpdatePasswordReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/UpdatePasswordReqDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/SportResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/SportResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/StadiumResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/StadiumResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/request/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/ReservationRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/request/ReservationRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/SportRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/request/SportRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/StadiumRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/request/StadiumRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/UpdatePasswordReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/request/UpdatePasswordReqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/request/UserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/request/UserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/ReservationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/response/ReservationResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/SportResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/response/SportResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/StadiumResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/response/StadiumResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/entities/dto/response/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/models/dto/response/UserResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/exceptions/handle/EntityNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/exceptions/handle/EntityNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/ReservationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/ReservationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/SportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/SportMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/StadiumMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/StadiumMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/mappingUtil/UploadPathUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/mapper/mappingUtil/UploadPathUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/repositories/SportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/repositories/SportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/repositories/StadiumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/repositories/StadiumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/EmailSenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/EmailSenderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/ReservationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/SportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/SportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/StadiumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/StadiumService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/EmailSenderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/EmailSenderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/ReservationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/SportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/SportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/StadiumServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/StadiumServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matrix/sportopia/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/20240515-01-create-authorities-table.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/20240515-02-insert-authorities-value.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/20240515-03-insert-users-value.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/20241505-04-insert-user_authority-admin.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/matrix/sportopia/services/impl/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/matrix/sportopia/services/impl/UserServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +151,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -123,7 +185,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Venera.DESKTOP-N0RPV6R/IdeaProjects/SportopiaApp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Venera.DESKTOP-N0RPV6R/IdeaProjects/SpringSecurityExample&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -252,7 +314,35 @@
       <workItem from="1716964302005" duration="18000" />
       <workItem from="1716964339823" duration="90000" />
       <workItem from="1716964548809" duration="16713000" />
-      <workItem from="1717072165230" duration="4371000" />
+      <workItem from="1717072165230" duration="15165000" />
+      <workItem from="1717225981321" duration="42000" />
+      <workItem from="1717232915237" duration="1319000" />
+      <workItem from="1717237917474" duration="11000" />
+      <workItem from="1717268606733" duration="338000" />
+      <workItem from="1717392634504" duration="62000" />
+      <workItem from="1717417138146" duration="6468000" />
+      <workItem from="1717477830871" duration="5257000" />
+      <workItem from="1717485542367" duration="55000" />
+      <workItem from="1717513671560" duration="2271000" />
+      <workItem from="1717529535055" duration="2793000" />
+      <workItem from="1717535792085" duration="24000" />
+      <workItem from="1717566241520" duration="2023000" />
+      <workItem from="1717571706145" duration="3878000" />
+      <workItem from="1717744055280" duration="3247000" />
+      <workItem from="1717763319099" duration="985000" />
+      <workItem from="1717764922712" duration="22000" />
+      <workItem from="1717764965984" duration="463000" />
+      <workItem from="1717765523180" duration="999000" />
+      <workItem from="1717795001261" duration="1056000" />
+      <workItem from="1717877692931" duration="223000" />
+      <workItem from="1718003690595" duration="1540000" />
+      <workItem from="1718007293159" duration="11000" />
+      <workItem from="1718091902212" duration="4814000" />
+      <workItem from="1718976867965" duration="4223000" />
+      <workItem from="1719038050342" duration="2756000" />
+      <workItem from="1719241561420" duration="13985000" />
+      <workItem from="1719390877303" duration="21000" />
+      <workItem from="1719587033037" duration="885000" />
     </task>
     <servers />
   </component>

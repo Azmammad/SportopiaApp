@@ -1,8 +1,8 @@
 package com.matrix.sportopia.services.impl;
 
 import com.matrix.sportopia.entities.Sport;
-import com.matrix.sportopia.entities.dto.request.SportRequestDto;
-import com.matrix.sportopia.entities.dto.response.SportResponseDto;
+import com.matrix.sportopia.models.dto.request.SportRequestDto;
+import com.matrix.sportopia.models.dto.response.SportResponseDto;
 import com.matrix.sportopia.exceptions.handle.AlreadyExistException;
 import com.matrix.sportopia.exceptions.handle.EntityNotFoundException;
 import com.matrix.sportopia.exceptions.handle.UpdateFailedException;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

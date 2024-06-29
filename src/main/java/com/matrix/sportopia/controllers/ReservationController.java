@@ -1,7 +1,7 @@
 package com.matrix.sportopia.controllers;
 
-import com.matrix.sportopia.entities.dto.request.ReservationRequestDto;
-import com.matrix.sportopia.entities.dto.response.ReservationResponseDto;
+import com.matrix.sportopia.models.dto.request.ReservationRequestDto;
+import com.matrix.sportopia.models.dto.response.ReservationResponseDto;
 import com.matrix.sportopia.services.ReservationService;
 import lombok.Data;
 import org.springframework.http.HttpStatus;

@@ -2,8 +2,8 @@ package com.matrix.sportopia.services.impl;
 
 import com.matrix.sportopia.entities.Sport;
 import com.matrix.sportopia.entities.Stadium;
-import com.matrix.sportopia.entities.dto.request.StadiumRequestDto;
-import com.matrix.sportopia.entities.dto.response.StadiumResponseDto;
+import com.matrix.sportopia.models.dto.request.StadiumRequestDto;
+import com.matrix.sportopia.models.dto.response.StadiumResponseDto;
 import com.matrix.sportopia.enums.StadiumStatus;
 import com.matrix.sportopia.exceptions.handle.AlreadyExistException;
 import com.matrix.sportopia.exceptions.handle.EntityNotFoundException;
@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service

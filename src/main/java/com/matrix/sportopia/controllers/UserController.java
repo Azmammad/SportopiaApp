@@ -1,18 +1,19 @@
 package com.matrix.sportopia.controllers;
 
-import com.matrix.sportopia.entities.User;
-import com.matrix.sportopia.entities.dto.request.UpdatePasswordReqDto;
-import com.matrix.sportopia.entities.dto.request.UserRequestDto;
-import com.matrix.sportopia.entities.dto.response.UserResponseDto;
+import com.matrix.sportopia.models.dto.request.UpdatePasswordReqDto;
+import com.matrix.sportopia.models.dto.request.UserRequestDto;
+import com.matrix.sportopia.models.dto.response.UserResponseDto;
 import com.matrix.sportopia.services.UserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -36,13 +37,24 @@ public class UserController {
         return userService.getAllNoActiveUsers();
     }
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> add(@ModelAttribute UserRequestDto userRequest) {
-        MultipartFile photo = userRequest.getPhoto();
-        userService.add(userRequest, photo);
-        return ResponseEntity.ok(photo.getOriginalFilename() + " " + photo.getSize() + " " + userRequest.getName());
+    @GetMapping("/photo")
+    public ResponseEntity<ByteArrayResource> getPhoto(@RequestParam String photoPath){
+        byte[] photo= userService.getPhoto(photoPath);
+        ByteArrayResource resource = new ByteArrayResource(photo);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename =/" + Paths.get(photoPath).getFileName().toString() + "/")
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(resource);
     }
+
+//    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public ResponseEntity<?> add(@ModelAttribute UserRequestDto userRequest) {
+//        MultipartFile photo = userRequest.getPhoto();
+//        userService.add(userRequest, photo);
+//        return ResponseEntity.ok(photo.getOriginalFilename() + " " + photo.getSize() + " " + userRequest.getName());
+//    }
 
     @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<UserResponseDto> update(@PathVariable Long id,

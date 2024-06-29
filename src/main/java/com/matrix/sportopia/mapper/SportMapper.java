@@ -1,8 +1,8 @@
 package com.matrix.sportopia.mapper;
 
 import com.matrix.sportopia.entities.Sport;
-import com.matrix.sportopia.entities.dto.request.SportRequestDto;
-import com.matrix.sportopia.entities.dto.response.SportResponseDto;
+import com.matrix.sportopia.models.dto.request.SportRequestDto;
+import com.matrix.sportopia.models.dto.response.SportResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

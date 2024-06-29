@@ -1,7 +1,7 @@
 package com.matrix.sportopia.services;
 
-import com.matrix.sportopia.entities.dto.request.StadiumRequestDto;
-import com.matrix.sportopia.entities.dto.response.StadiumResponseDto;
+import com.matrix.sportopia.models.dto.request.StadiumRequestDto;
+import com.matrix.sportopia.models.dto.response.StadiumResponseDto;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
 package com.matrix.sportopia.mapper;
 
 import com.matrix.sportopia.entities.User;
-import com.matrix.sportopia.entities.dto.request.UserRequestDto;
-import com.matrix.sportopia.entities.dto.response.UserResponseDto;
+import com.matrix.sportopia.models.dto.request.UserRequestDto;
+import com.matrix.sportopia.models.dto.response.UserResponseDto;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-30T10:25:45+0400",
+    date = "2024-06-26T11:59:01+0400",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.7.jar, environment: Java 17.0.9 (Oracle Corporation)"
 )
 @Component
@@ -44,6 +44,7 @@ public class UserMapperImpl extends UserMapper {
 
         user.setName( userRequestDto.getName() );
         user.setSurname( userRequestDto.getSurname() );
+        user.setUsername( userRequestDto.getUsername() );
         user.setEmail( userRequestDto.getEmail() );
         user.setPhoneNumber( userRequestDto.getPhoneNumber() );
         user.setPassword( userRequestDto.getPassword() );
@@ -59,12 +60,29 @@ public class UserMapperImpl extends UserMapper {
             return;
         }
 
-        user.setName( userRequestDto.getName() );
-        user.setSurname( userRequestDto.getSurname() );
-        user.setEmail( userRequestDto.getEmail() );
-        user.setPhoneNumber( userRequestDto.getPhoneNumber() );
-        user.setPassword( userRequestDto.getPassword() );
-        user.setBankAccount( userRequestDto.getBankAccount() );
-        user.setStatus( userRequestDto.getStatus() );
+        if ( userRequestDto.getName() != null ) {
+            user.setName( userRequestDto.getName() );
+        }
+        if ( userRequestDto.getSurname() != null ) {
+            user.setSurname( userRequestDto.getSurname() );
+        }
+        if ( userRequestDto.getUsername() != null ) {
+            user.setUsername( userRequestDto.getUsername() );
+        }
+        if ( userRequestDto.getEmail() != null ) {
+            user.setEmail( userRequestDto.getEmail() );
+        }
+        if ( userRequestDto.getPhoneNumber() != null ) {
+            user.setPhoneNumber( userRequestDto.getPhoneNumber() );
+        }
+        if ( userRequestDto.getPassword() != null ) {
+            user.setPassword( userRequestDto.getPassword() );
+        }
+        if ( userRequestDto.getBankAccount() != null ) {
+            user.setBankAccount( userRequestDto.getBankAccount() );
+        }
+        if ( userRequestDto.getStatus() != null ) {
+            user.setStatus( userRequestDto.getStatus() );
+        }
     }
 }

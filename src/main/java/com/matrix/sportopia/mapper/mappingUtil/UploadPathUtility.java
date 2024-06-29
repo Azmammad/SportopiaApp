@@ -14,18 +14,29 @@ import java.util.UUID;
 
 @Slf4j
 public class UploadPathUtility {
-    public static String uploadPath(MultipartFile file, String UPLOAD_DIR) {
-       try {
+    public static String uploadPath(MultipartFile file, String UPLOAD_DIR, Long userId, String userName, String userSurname) {
+        try {
+            String forFolderUserName = userName.replaceAll("[^a-zA-Z0-9]", "_");
+            String forFolderUserSurname = userSurname.replaceAll("[^a-zA-Z0-9]", "_");
+            String forFolderUserId = "user_" + userId;
+            String uniqueDirName = forFolderUserId + "_" + forFolderUserName + "_" + forFolderUserSurname;
+
+            Path userDir = Paths.get(UPLOAD_DIR, uniqueDirName);
+            if (!Files.exists(userDir)) {
+                Files.createDirectories(userDir);
+            }
+
             String originalFilename = file.getOriginalFilename();
             Path targetPath = Paths.get(UPLOAD_DIR, originalFilename);
+
             while (Files.exists(targetPath)) {
                 String baseName = FilenameUtils.getBaseName(originalFilename);
                 String extension = FilenameUtils.getExtension(originalFilename);
                 String newFilename = baseName + "_" + UUID.randomUUID().toString() + "." + extension;
-                targetPath = Paths.get(UPLOAD_DIR, newFilename);
+                targetPath = userDir.resolve(newFilename);
             }
-           Files.copy(file.getInputStream(), targetPath);
-           return targetPath.toString();
+            Files.copy(file.getInputStream(), targetPath);
+            return targetPath.toString();
         } catch (Exception e) {
             log.error("error due to " + e.getMessage());
             throw new FileIOException(e.getMessage());

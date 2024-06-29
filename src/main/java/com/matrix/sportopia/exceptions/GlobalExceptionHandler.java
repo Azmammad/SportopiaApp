@@ -1,11 +1,11 @@
 package com.matrix.sportopia.exceptions;
 
 import com.matrix.sportopia.exceptions.handle.*;
+import com.matrix.sportopia.models.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
@@ -21,8 +21,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<?> handleEntityNotFoundException(EntityNotFoundException e){
         log.error("EntityNotFoundException: {}", e.getMessage());
-        return ResponseEntity.notFound().build();
+        ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), 500, "Melumat tapilmadi");
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+
     }
+
+
 
     @ExceptionHandler(UpdateFailedException.class)
     public ResponseEntity<?> handleUpdateFailedException(UpdateFailedException e){
@@ -41,4 +45,18 @@ public class GlobalExceptionHandler {
         log.error("FileIOException: {}", e.getMessage());
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<ErrorResponse> handleCustomException(CustomException e) {
+        ErrorResponse errorResponse = new ErrorResponse(e.getMessage(),e.getCode(),e.getData());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleGeneralException(Exception ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), 500, null);
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
 }

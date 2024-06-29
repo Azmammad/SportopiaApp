@@ -1,7 +1,7 @@
 package com.matrix.sportopia.controllers;
 
-import com.matrix.sportopia.entities.dto.request.StadiumRequestDto;
-import com.matrix.sportopia.entities.dto.response.StadiumResponseDto;
+import com.matrix.sportopia.models.dto.request.StadiumRequestDto;
+import com.matrix.sportopia.models.dto.response.StadiumResponseDto;
 import com.matrix.sportopia.services.StadiumService;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @Data
-@RequestMapping("/api/stadiums")
+@RequestMapping("")
 public class StadiumController {
     private final StadiumService stadiumService;
 
