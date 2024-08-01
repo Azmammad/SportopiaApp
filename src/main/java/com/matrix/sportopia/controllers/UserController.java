@@ -1,9 +1,11 @@
 package com.matrix.sportopia.controllers;
 
-import com.matrix.sportopia.models.dto.request.UpdatePasswordReqDto;
+import com.matrix.sportopia.models.dto.request.ChangePasswordDto;
 import com.matrix.sportopia.models.dto.request.UserRequestDto;
 import com.matrix.sportopia.models.dto.response.UserResponseDto;
 import com.matrix.sportopia.services.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
@@ -38,25 +40,17 @@ public class UserController {
     }
 
     @GetMapping("/photo")
-    public ResponseEntity<ByteArrayResource> getPhoto(@RequestParam String photoPath){
-        byte[] photo= userService.getPhoto(photoPath);
+    public ResponseEntity<ByteArrayResource> getPhoto(@RequestParam String photoPath) {
+        byte[] photo = userService.getPhoto(photoPath);
         ByteArrayResource resource = new ByteArrayResource(photo);
 
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename =/" + Paths.get(photoPath).getFileName().toString() + "/")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =/" + Paths.get(photoPath).getFileName().toString() + "/")
                 .contentType(MediaType.IMAGE_JPEG)
                 .body(resource);
     }
 
-//    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public ResponseEntity<?> add(@ModelAttribute UserRequestDto userRequest) {
-//        MultipartFile photo = userRequest.getPhoto();
-//        userService.add(userRequest, photo);
-//        return ResponseEntity.ok(photo.getOriginalFilename() + " " + photo.getSize() + " " + userRequest.getName());
-//    }
-
-    @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(value = "update/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<UserResponseDto> update(@PathVariable Long id,
                                                   @ModelAttribute UserRequestDto requestDto) {
         MultipartFile photo = requestDto.getPhoto();
@@ -65,7 +59,7 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         userService.delete(id);
@@ -76,11 +70,9 @@ public class UserController {
         userService.changeStatus(id);
     }
 
-    @PutMapping("/password-update")
-    public ResponseEntity<UserResponseDto> updatePassword(@RequestBody UpdatePasswordReqDto updatePasswordReqDto) {
-        UserResponseDto updateUser = userService.updatePassword(updatePasswordReqDto);
-        return ResponseEntity.ok(updateUser);
+    @PatchMapping("/password-update")
+    public void changePassword(HttpServletRequest request,
+                               @RequestBody @Valid ChangePasswordDto changePasswordReqDto) {
+        userService.changePassword(request, changePasswordReqDto);
     }
-
-
 }

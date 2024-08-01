@@ -165,7 +165,6 @@ public class SportServiceImpl implements SportService {
         }
         sportRepository.save(sport);
     }
-
     private boolean isValidStatus(int status) {
         return status == 1 || status == 0 || status == -1;
     }

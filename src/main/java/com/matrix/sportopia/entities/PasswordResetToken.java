@@ -3,9 +3,10 @@ package com.matrix.sportopia.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
+@Table
 @Data
 public class PasswordResetToken {
     @Id
@@ -17,5 +18,5 @@ public class PasswordResetToken {
     @JoinColumn(nullable = false,name = "user_id")
     private User user;
 
-    private LocalDateTime expiryDate;
+    private Date expiryDate;
 }

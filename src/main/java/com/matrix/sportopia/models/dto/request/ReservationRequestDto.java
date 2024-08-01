@@ -11,9 +11,4 @@ public class ReservationRequestDto {
     private Long stadiumId;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-
-    @NotNull
-    private Boolean status;
-    /*@OneToOne(mappedBy = "reservation")
-    private Payment payment;*/
 }

@@ -30,6 +30,9 @@ spring:
 
 app:
   files: C:\Users\Venera.DESKTOP-N0RPV6R\Documents\project-files
+company:
+  bank:
+    account: "5239166325478965"
 
 application:
   security:

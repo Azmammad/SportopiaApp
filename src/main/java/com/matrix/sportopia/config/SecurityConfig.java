@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 .requestMatchers(permitAllUrls).permitAll()
                                 .requestMatchers(adminUrls).hasAnyAuthority("ADMIN")
                                 .requestMatchers(userUrls).hasAnyAuthority("USER")
+                                .requestMatchers(userUrls).hasAnyAuthority("USER","ADMIN")
                                 .requestMatchers(anyAuthUrls).authenticated()
                         //.anyRequest().authenticated()
                 ).exceptionHandling(exceptionHandling-> exceptionHandling
@@ -67,22 +68,35 @@ public class SecurityConfig {
             "/configuration/ui",
             "/swagger-ui/**",
             "/swagger-ui.html",
-            "/auth/**"
+            "/auth/**",
+            "/api/sports/{id}",
+            "/api/sports/sport-list",
+            "/api/stadiums/{id}",
+            "/api/stadiums/{sportId}",
+            "/api/stadiums/list"
     };
 
     static String[] adminUrls = {
             "/controller/admin",
-            "/api/users/**",
             "/api/stadiums/**",
             "/api/sports/**",
-            "/api/reservations/**"
+            "/api/reservations/**",
+            "/api/users/noActive-list",
+            "/api/users/list",
+            "/api/users/change-status/{id}",
+            "/api/users/",
     };
 
     static String[] userUrls = {
-            "/api/users/**",
-            "/api/stadiums/**",
-            "/api/sports/**",
+            "/api/users/password-update",
+            "/api/users/update/{id}",
             "/api/reservations/**"
+    };
+
+    static String[] userAndAdminUrls = {
+            "/api/users/{id}",
+            "/api/users/photo",
+            "/api/users/delete/{id}",
     };
 
     static String[] anyAuthUrls = {

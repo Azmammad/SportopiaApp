@@ -2,9 +2,13 @@ package com.matrix.sportopia.controllers;
 
 
 import com.matrix.sportopia.models.dto.request.LoginReq;
+import com.matrix.sportopia.models.dto.request.RecoveryPassword;
 import com.matrix.sportopia.models.dto.request.UserRequestDto;
+import com.matrix.sportopia.models.dto.response.UserResponseDto;
 import com.matrix.sportopia.services.impl.AuthService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,9 +31,17 @@ public class AuthController {
 
     @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> register(@ModelAttribute UserRequestDto userRequest) {
-        MultipartFile photo = userRequest.getPhoto();
-        authService.register(userRequest, photo);
-        return ResponseEntity.ok(photo.getOriginalFilename() + " " + photo.getSize() + " " + userRequest.getName());
+    public UserResponseDto register(@ModelAttribute UserRequestDto userRequest) {
+        return authService.register(userRequest);
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> requestPasswordReset(@RequestParam @NotBlank @Email String email){
+        return authService.requestPasswordReset(email);
+    }
+
+    @PatchMapping("/recovery-password")
+    public ResponseEntity<String> resetPassword(@RequestBody @Valid RecoveryPassword recoveryPassword) {
+        return authService.resetPassword(recoveryPassword);
     }
 }

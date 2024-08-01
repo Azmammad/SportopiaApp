@@ -32,8 +32,8 @@ public class ReservationController {
     }
 
     @PutMapping
-    public ReservationResponseDto update(@RequestBody ReservationRequestDto reservationRequestDto){
-        return reservationService.update(reservationRequestDto);
+    public ReservationResponseDto update(@PathVariable Long id,@RequestBody ReservationRequestDto reservationRequestDto){
+        return reservationService.update(id,reservationRequestDto);
     }
 
     @DeleteMapping("/{id}")

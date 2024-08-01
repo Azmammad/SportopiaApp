@@ -25,4 +25,5 @@ public class EmailSenderImpl implements EmailSenderService {
         javaMailSender.send(msg);
         log.info("-> successfully send email to {}", email.getReceiver());
     }
+
 }

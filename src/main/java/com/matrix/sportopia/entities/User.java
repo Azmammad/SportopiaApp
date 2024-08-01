@@ -20,7 +20,6 @@ import java.util.Set;
 @Table(name = "users")
 @NoArgsConstructor
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -54,12 +53,9 @@ public class User {
     @Column(name = "photo_path")
     private String photoPath;
 
-
-
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Reservation> reservations;
-
 
     @JsonIgnore
     @ManyToMany

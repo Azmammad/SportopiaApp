@@ -25,7 +25,4 @@ public class UserRequestDto {
     @Size(min = 16, max = 16)
     private String bankAccount;
     private MultipartFile photo;
-    @NotNull
-    private UserStatus status;
-
 }

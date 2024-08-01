@@ -34,4 +34,7 @@ public class Reservation {
 
     @NotNull
     private Boolean status;
+
+    @Column(nullable = false)
+    private Boolean isPaid = false;
 }

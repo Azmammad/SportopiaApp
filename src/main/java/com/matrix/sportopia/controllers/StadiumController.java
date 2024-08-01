@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @Data
-@RequestMapping("")
+@RequestMapping("/api/stadiums")
 public class StadiumController {
     private final StadiumService stadiumService;
 
@@ -20,17 +20,17 @@ public class StadiumController {
         return stadiumService.getById(id);
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<StadiumResponseDto> getAll(){
         return stadiumService.getAll();
     }
 
-    @GetMapping("/sport/{sportId}")
+    @GetMapping("/{sportId}")
     public List<StadiumResponseDto> getStadiumsBySportId(@PathVariable Long sportId){
         return stadiumService.getStadiumsBySportId(sportId);
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public StadiumResponseDto add(@RequestBody StadiumRequestDto stadiumRequestDto){
         return stadiumService.add(stadiumRequestDto);

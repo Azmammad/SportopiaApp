@@ -90,7 +90,6 @@ public class JwtUtil {
         }
     }
 
-    //tokeni yoxlamag is bearer
     public String resolveToken(HttpServletRequest request) {
 
         String TOKEN_HEADER = "Authorization";

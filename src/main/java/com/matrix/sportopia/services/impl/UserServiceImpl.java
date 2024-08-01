@@ -1,10 +1,9 @@
 package com.matrix.sportopia.services.impl;
 
-import com.matrix.sportopia.entities.Authority;
 import com.matrix.sportopia.entities.User;
 import com.matrix.sportopia.exceptions.handle.*;
+import com.matrix.sportopia.models.dto.request.ChangePasswordDto;
 import com.matrix.sportopia.models.dto.request.Email;
-import com.matrix.sportopia.models.dto.request.UpdatePasswordReqDto;
 import com.matrix.sportopia.models.dto.request.UserRequestDto;
 import com.matrix.sportopia.models.dto.response.UserResponseDto;
 import com.matrix.sportopia.enums.UserStatus;
@@ -14,11 +13,13 @@ import com.matrix.sportopia.repositories.AuthorityRepository;
 import com.matrix.sportopia.repositories.UserRepository;
 import com.matrix.sportopia.services.EmailSenderService;
 import com.matrix.sportopia.services.UserService;
-import jakarta.transaction.Transactional;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -26,7 +27,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.matrix.sportopia.enums.UserStatus.*;
@@ -42,6 +42,8 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final EmailSenderService emailSenderService;
     private final AuthorityRepository authorityRepository;
+    private final JwtUtil jwtUtil;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public UserResponseDto getById(Long id) {
@@ -81,45 +83,6 @@ public class UserServiceImpl implements UserService {
         log.info("-> successfully");
         return responseDtoList;
     }
-
-   /* @Override
-    @Transactional
-    public UserResponseDto add(UserRequestDto userRequestDto, MultipartFile photo) {
-        if (userRequestDto == null) {
-            log.warn("-> cannot add null user");
-            throw new IllegalArgumentException("User cannot be null");
-        }
-        log.info("-> started the insert operation!");
-        User addedUser;
-        UserResponseDto userResponseDto;
-        try {
-            userRequestDto.setPhoto(null);
-            User user = userMapper.toEntity(userRequestDto);
-
-            Authority defaultValue = authorityRepository.findByName("USER");
-            user.getAuthorities().add(defaultValue);
-
-            addedUser = userRepository.save(user);
-            if (photo!=null && !photo.isEmpty()){
-                String userName = user.getName();
-                String userSurname = user.getSurname();
-                Long userId = user.getId();
-                String photoPath = UploadPathUtility.uploadPath(photo,rootDir, userId, userName,userSurname);
-                user.setPhotoPath(photoPath);
-            }
-            userRepository.save(addedUser);
-            userResponseDto = userMapper.toResponse(addedUser);
-            log.info("-> successfully: " + addedUser);
-
-            sendToMail(addedUser);
-
-        } catch (Exception e) {
-            log.error("error ", e);
-            throw new AlreadyExistException("Failed");
-        }
-        return userResponseDto;
-    }*/
-
 
     @Override
     @Transactional
@@ -185,36 +148,26 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserResponseDto updatePassword(UpdatePasswordReqDto updatePasswordReqDto) {
-        if (updatePasswordReqDto == null) {
-            log.warn("-> cannot update password with null request");
-            throw new IllegalArgumentException("Request cannot be null");
+    public void changePassword(HttpServletRequest request, ChangePasswordDto changePasswordDto) {
+        Integer userId = jwtUtil.getUserId(jwtUtil.resolveClaims(request));
+        log.info("-> user changePassword method started by userId: {}", userId);
+        User user = userRepository.findById(Long.valueOf(userId))
+                .orElseThrow(()->new EntityNotFoundException("User not found"));
+        if(changePasswordDto.getNewPassword().equals(changePasswordDto.getRetryPassword()) &&
+                passwordEncoder.matches(changePasswordDto.getCurrentPassword(), user.getPassword())){
+            user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
+            userRepository.save(user);
+            log.info("-> password changed by user_id = {}", userId);
+        }else {
+            log.error("-> failed to change password");
+            throw new IncorrectPasswordException("Password update failed");
         }
-        String currentPassword = updatePasswordReqDto.getCurrentPassword();
-        String newPassword = updatePasswordReqDto.getNewPassword();
-        String againNewPassword = updatePasswordReqDto.getAgainNewPassword();
+    }
 
-        if (!newPassword.equals(againNewPassword)) {
-            log.error("-> new passwords do not match");
-            throw new IllegalArgumentException("New passwords do not match");
-        }
-        String email = getCurrentUserEmail();
-
-        Optional<User> optionalUser = userRepository.findByEmail(email);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            if (user.getPassword().equals(currentPassword)) {
-                user.setPassword(newPassword);
-                User updatedUser = userRepository.save(user);
-                return userMapper.toResponse(updatedUser);
-            } else {
-                log.error("-> current password does not match for user with email {}", email);
-                throw new IllegalArgumentException("Current password is incorrect");
-            }
-        } else {
-            log.error("-> user with email {} not found", email);
-            throw new EntityNotFoundException("User not found");
-        }
+    @Override
+    public void changePassword(User user, String newPassword) {
+        user.setPassword(newPassword);
+        userRepository.save(user);
     }
 
     @Override
@@ -226,22 +179,11 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Failed to read photo from path: " + photoPath, e);
         }
     }
-    /*public ResponseEntity<String> requestForResetPassword(String email){
-        log.info("requestForResetPassword method started by: {}", email);
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(()-> new EntityNotFoundException("User not found with this email!"));
 
-        Long userId = user.getId();
-        Optional<PasswordResetToken> passwordResetToken = tokenRepository.findByUserId(userId);
-        passwordResetToken.ifPresent(tokenRepository::delete);
-    }*/
-
-    /*@Override
-    public void resetPassword(String token,String newPassword){
-        PasswordResetToken resetToken = tokenRepository.findByToken(token).orElse
-    }*/
-
-
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(()-> new EntityNotFoundException("User not found"));
+    }
 
     private void sendToMail(User addedUser) {
         Email email = new Email();

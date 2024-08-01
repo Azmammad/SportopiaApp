@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-26T11:59:01+0400",
+    date = "2024-08-01T15:00:29+0400",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.7.jar, environment: Java 17.0.9 (Oracle Corporation)"
 )
 @Component
 public class ReservationMapperImpl extends ReservationMapper {
 
     @Override
-    public ReservationResponseDto toResponce(Reservation reservation) {
+    public ReservationResponseDto toResponse(Reservation reservation) {
         if ( reservation == null ) {
             return null;
         }
@@ -38,8 +38,17 @@ public class ReservationMapperImpl extends ReservationMapper {
 
         reservation.setStartTime( reservationRequestDto.getStartTime() );
         reservation.setEndTime( reservationRequestDto.getEndTime() );
-        reservation.setStatus( reservationRequestDto.getStatus() );
 
         return reservation;
+    }
+
+    @Override
+    public void updateEntityFromDto(ReservationRequestDto requestDto, Reservation entity) {
+        if ( requestDto == null ) {
+            return;
+        }
+
+        entity.setStartTime( requestDto.getStartTime() );
+        entity.setEndTime( requestDto.getEndTime() );
     }
 }

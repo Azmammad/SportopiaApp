@@ -3,6 +3,7 @@ package com.matrix.sportopia.services.impl;
 import com.matrix.sportopia.entities.Reservation;
 import com.matrix.sportopia.entities.Stadium;
 import com.matrix.sportopia.entities.User;
+import com.matrix.sportopia.exceptions.handle.ResourceNotFoundException;
 import com.matrix.sportopia.models.dto.request.ReservationRequestDto;
 import com.matrix.sportopia.models.dto.response.ReservationResponseDto;
 import com.matrix.sportopia.exceptions.handle.EntityNotFoundException;
@@ -32,18 +33,37 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ReservationResponseDto getById(Long id) {
         log.info("-> reservation-service get by id operation with id = {}", id);
-        ReservationResponseDto reservationResponseDto = reservationRepository.findById(id).
-                map(reservationMapper::toResponce).
-                orElseThrow(() -> new EntityNotFoundException("reservation not found"));
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Reservation not found with id " + id));
+        ReservationResponseDto responseDto = reservationMapper.toResponse(reservation);
         log.info("-> Successful! reservation-service get by id operation with id = {}", id);
-        return reservationResponseDto;
+        return responseDto;
+    }
+
+    @Override
+    public List<ReservationResponseDto> getByUserId(Long userId){
+        log.info("-> fetching reservations for user id: {}", userId);
+        List<Reservation> reservations = reservationRepository.findByUserId(userId);
+        return reservations.stream()
+                .map(reservationMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ReservationResponseDto> getByStadiumId(Long stadiumId){
+        log.info("-> fetching reservations for stadium id: {}", stadiumId);
+        List<Reservation> reservations = reservationRepository.findByStadiumId(stadiumId);
+        return reservations.stream()
+                .map(reservationMapper::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<ReservationResponseDto> getAll() {
-        log.info("-> started getAll method for reservation");
+        log.info("-> fetching all reservations");
         List<ReservationResponseDto> list = reservationRepository.findAll().stream().
-                map(reservationMapper::toResponce).collect(Collectors.toList());
+                map(reservationMapper::toResponse).collect(Collectors.toList());
+        //?
         if (list.isEmpty()){
             throw new EntityNotFoundException("Reservation not found");
         }
@@ -62,13 +82,23 @@ public class ReservationServiceImpl implements ReservationService {
                 orElseThrow(() -> new NoSuchElementException("Stadium not found"));
         reservation.setStadium(stadium);
 
-        return reservationMapper.toResponce(reservationRepository.save(reservation));
+        reservation.setStatus(true);
+        reservation.setIsPaid(false);
+
+        Reservation savedReservation = reservationRepository.save(reservation);
+
+        log.info("-> added reservation with ID {}", savedReservation.getId());
+        return reservationMapper.toResponse(savedReservation);
     }
 
     @Override
-    public ReservationResponseDto update(ReservationRequestDto reservationRequest) {
-        Reservation reservation = reservationMapper.toEntity(reservationRequest);
-        return reservationMapper.toResponce(reservationRepository.save(reservation));
+    public ReservationResponseDto update(Long id,ReservationRequestDto reservationRequest) {
+        Reservation existingReservation = reservationRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Reservation not found with id " + id));
+        reservationMapper.updateEntityFromDto(reservationRequest,existingReservation);
+
+        Reservation updatedReservation = reservationRepository.save(existingReservation);
+        return reservationMapper.toResponse(updatedReservation);
     }
 
     @Override
